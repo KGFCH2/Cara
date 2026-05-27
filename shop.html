@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cara — Modern E-Commerce</title>
+    <title>Shop | Cara — Modern E-Commerce</title>
     <link rel="icon" type="image/jpg" sizes="32x32" href="images/favicon.jpg" />
     <meta name="description" content="Shop the latest trends on our e-commerce store. Dark theme supported for a better user experience." />
     <meta name="keywords" content="e-commerce, shopping, online store, dark mode, buy online, latest fashion" />
@@ -13,7 +13,7 @@
     <meta property="og:title" content="Cara Shop" />
     <meta property="og:description" content="Shop the latest trends in our e-commerce store." />
     <meta property="og:image" content="images/logo.png" />
-    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:url" content="https://cara-seven-ashen.vercel.app/shop.html" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Cara Shop" />
@@ -56,219 +56,185 @@
     <section id="shop-hero">
       <div class="hero-copy">
         <h1>Shop the Latest Trends</h1>
-        <p>Browse curated fashion collections, then open the issue proposal in-page using the button below.</p>
+        <p>Browse curated fashion collections, filtered and sorted to your preference.</p>
         <div class="hero-buttons">
           <a href="#product1" class="btn btn-primary">Browse Products</a>
         </div>
       </div>
     </section>
 
- <section id="search-filter" class="section-p1">
-
-  <!-- SEARCH -->
-  <div class="search-container">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search products..." />
-      <button id="searchBtn">
-        <i class="ri-search-line"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- FILTER ROW -->
-  <div class="filters-row">
-
-    <div class="filter-container">
-      <label>Category</label>
-      <select id="categoryFilter">
-        <option value="all">All</option>
-        <option value="street">Street</option>
-        <option value="minimal">Minimal</option>
-        <option value="formal">Formal</option>
-      </select>
-    </div>
-
-    <div class="filter-container">
-      <label>Style</label>
-      <select id="style-filter">
-        <option value="all">All</option>
-      </select>
-    </div>
-
-    <div class="filter-container">
-      <label>Brand</label>
-      <select id="brand-filter">
-        <option value="all">All</option>
-      </select>
-    </div>
-
-    <div class="filter-container">
-      <label>Color</label>
-      <select id="color-filter">
-        <option value="all">All</option>
-      </select>
-    </div>
-
-    <!-- RESET BUTTON -->
-    <div class="filter-container reset-wrapper">
-      <label style="visibility:hidden;">Reset</label>
-      <button id="resetFiltersBtn" class="reset-btn">
-        Reset Filters
-      </button>
-    </div>
-
-  </div>
-
-</section>
-    <section id="product1" class="section-p1">
-      <div class="sort-container" aria-label="Sort products" role="region" aria-live="polite">
-        <label class="sort-label" for="sort-price"><i class="ri-sorting-asc"></i> Sort by</label>
-        <div class="sort-select-wrap">
-          <select id="sort-price" class="sort-dropdown" aria-describedby="sort-hint">
-            <option value="default">Default Sorting</option>
-            <option value="low-high">Price: Low to High</option>
-            <option value="high-low">Price: High to Low</option>
-            <option value="rating-high">Rating: High to Low</option>
-            <option value="rating-low">Rating: Low to High</option>
-            <option value="newest">Newest</option>
-          </select>
-          <i class="ri-arrow-down-s-line sort-chevron" aria-hidden="true"></i>
-          <span id="sort-hint" hidden>Choose how to order the product listings</span>
+    <section id="search-filter" class="section-p1">
+      <!-- SEARCH -->
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+          <button id="searchBtn" aria-label="Submit search">
+            <i class="ri-search-line"></i>
+          </button>
         </div>
       </div>
-      <div class="pro-container" id="shop-container" aria-live="polite" aria-label="Product listings"></div>
+
+      <!-- FILTER ROW -->
+      <div class="filters-row">
+        <div class="filter-container">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="all">All</option>
+            <option value="street">Street</option>
+            <option value="minimal">Minimal</option>
+            <option value="formal">Formal</option>
+          </select>
+        </div>
+
+        <div class="filter-container">
+          <label for="style-filter">Style</label>
+          <select id="style-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div class="filter-container">
+          <label for="brand-filter">Brand</label>
+          <select id="brand-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div class="filter-container">
+          <label for="color-filter">Color</label>
+          <select id="color-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <!-- RESET BUTTON -->
+        <div class="filter-container reset-wrapper">
+          <label style="visibility:hidden;">Reset</label>
+          <button id="resetFiltersBtn" class="reset-btn" aria-label="Reset all filters">
+            Reset Filters
+          </button>
+        </div>
+      </div>
     </section>
 
-    <section id="newsletter" class="section-p1">
-      <div class="newstext">
-        <h4>Sign Up For Newsletters</h4>
-        <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
-      </div>
-      <form class="form newsletter-form">
-        <input type="email" placeholder="Your email address" required />
-        <button type="submit" class="normal">Sign Up</button>
-      </form>
-    </section>
+    <main>
+      <section id="product1" class="section-p1">
+        <div class="sort-container" aria-label="Sort products list">
+          <label class="sort-label" for="sort-price"><i class="ri-sorting-asc"></i> Sort by</label>
+          <div class="sort-select-wrap">
+            <select id="sort-price" class="sort-dropdown">
+              <option value="default">Default Sorting</option>
+              <option value="low-high">Price: Low to High</option>
+              <option value="high-low">Price: High to Low</option>
+              <option value="rating-high">Rating: High to Low</option>
+              <option value="rating-low">Rating: Low to High</option>
+              <option value="newest">Newest</option>
+            </select>
+            <i class="ri-arrow-down-s-line sort-chevron" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="pro-container" id="shop-container"></div>
+      </section>
+
+      <section id="newsletter" class="section-p1">
+        <div class="newstext">
+          <h4>Sign Up For Newsletters</h4>
+          <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+        </div>
+        <form class="form newsletter-form" aria-label="Newsletter signup">
+          <label for="newsletter-email" class="sr-only">Your email address</label>
+          <input type="email" id="newsletter-email" placeholder="Your email address" required />
+          <button type="submit" class="normal">Sign Up</button>
+        </form>
+      </section>
+    </main>
 
     <button id="backToTop" title="Back to Top" aria-label="Back to top">⬆</button>
     <button id="Toptoback" title="Top To Back" aria-label="Scroll to bottom">⬇</button>
 
     <footer class="section-p1">
-    <section id="product1" class="section-p1">
-      <div class="sort-container" aria-label="Sort products" role="region" aria-live="polite">
-        <label class="sort-label" for="sort-price"><i class="ri-sorting-asc"></i> Sort by</label>
-        <div class="sort-select-wrap">
-          <select id="sort-price" class="sort-dropdown">
-            <option value="default">Default Sorting</option>
-            <option value="low-high">Price: Low to High</option>
-            <option value="high-low">Price: High to Low</option>
-            <option value="rating-high">Rating: High to Low</option>
-            <option value="rating-low">Rating: Low to High</option>
-            <option value="newest">Newest</option>
-          </select>
-          <i class="ri-arrow-down-s-line sort-chevron" aria-hidden="true"></i>
+      <!-- Contact Column -->
+      <div class="col">
+        <img class="logo" src="images/logo.png" alt="Cara Logo">
+        <h4>Contact</h4>
+        <p>
+          <strong>Address:</strong>
+          562 Wellington Road,
+        </p>
+        <p>Street 32, San Francisco</p>
+        <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
+        <p><strong>Time:</strong> 10AM - 6PM, Mon - Sat</p>
+
+        <div class="follow">
+          <h4>Follow us</h4>
+          <div class="icon">
+            <a href="https://x.com/JanaviPandole" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/janavipandole" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/janavi-pandole-80a7b2290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.youtube.com/@JanaviPandole" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="pro-container" id="shop-container"></div>
-    </section>
 
-    <section id="newsletter" class="section-p1">
-      <div class="newstext">
-        <h4>Sign Up For Newsletters</h4>
-        <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+      <!-- About Column -->
+      <div class="col">
+        <h4>About</h4>
+        <a href="about.html">About Us</a>
+        <a href="deliveryInformation.html">Delivery Information</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Conditions</a>
+        <a href="contact.html">Contact Us</a>
       </div>
-      <form class="form newsletter-form">
-        <input type="email" placeholder="Your email address" required />
-        <button type="submit" class="normal">Sign Up</button>
-      </form>
-    </section>
 
-    <button id="backToTop" title="Back to Top" aria-label="Back to top">⬆</button>
-    <button id="Toptoback" title="Top To Back" aria-label="Scroll to bottom">⬇</button>
+      <!-- My Account Column -->
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="login.html">Sign In</a>
+        <a href="cart.html">View Cart</a>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="track-order.html">Track My Order</a>
+        <a href="contact.html">Help</a>
+      </div>
 
-    <footer class="section-p1">
-    <!-- Contact Column -->
-    <div class="col">
-      <img class="logo" src="images/logo.png" alt="Cara Logo">
-      <h4>Contact</h4>
-      <p>
-        <strong>Address:</strong> 
-        562 Wellington Road, 
-      </p>
-      <p>Street 32, San Francisco</p>
-      <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
-      <p><strong>Time:</strong> 10AM - 6PM, Mon - Sat</p>
+      <!-- Newsletter Column -->
+      <div class="col newsletter-footer">
+        <h4>Newsletter</h4>
+        <p>
+          Get email updates about our latest shop and
+          <span>special offers.</span>
+        </p>
+        <form class="newsletter-form" aria-label="Footer newsletter signup">
+          <label for="footer-newsletter-email" class="sr-only">Your email address</label>
+          <input type="email" id="footer-newsletter-email" placeholder="Your email address" required="">
+          <button type="submit" class="normal">Sign Up</button>
+        </form>
+      </div>
 
-      <div class="follow">
-        <h4>Follow us</h4>
-        <div class="icon">
-          <a href="https://x.com/JanaviPandole" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://github.com/janavipandole" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/janavi-pandole-80a7b2290" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://www.youtube.com/@JanaviPandole" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-youtube"></i>
-          </a>
+      <!-- Install App Column -->
+      <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+          <img src="images/pay/app.jpg" alt="Download from App Store" />
+          <img src="images/pay/play.jpg" alt="Get it on Google Play" />
+        </div>
+        <p>Secured Payment Gateways</p>
+        <div class="payment-icons">
+          <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer" aria-label="Visa"><i class="fab fa-cc-visa"></i></a>
+          <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" aria-label="Mastercard"><i class="fab fa-cc-mastercard"></i></a>
+          <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" aria-label="PayPal"><i class="fab fa-cc-paypal"></i></a>
+          <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer" aria-label="American Express"><i class="fab fa-cc-amex"></i></a>
+          <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><i class="fab fa-cc-stripe"></i></a>
         </div>
       </div>
-    </div>
-
-    <!-- About Column -->
-    <div class="col">
-      <h4>About</h4>
-      <a href="about.html">About Us</a>
-      <a href="deliveryInformation.html">Delivery Information</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms and Conditions</a>
-      <a href="contact.html">Contact Us</a>
-    </div>
-
-    <!-- My Account Column -->
-    <div class="col">
-      <h4>My Account</h4>
-      <a href="login.html">Sign In</a>
-      <a href="cart.html">View Cart</a>
-      <a href="#">My Wishlist</a>
-      <a href="cart.html">Track My Order</a>
-      <a href="contact.html">Help</a>
-    </div>
-
-    <!-- Newsletter Column -->
-    <div class="col newsletter-footer">
-      <h4>Newsletter</h4>
-      <p>
-        Get email updates about our latest shop and
-        <span>special offers.</span>
-      </p>
-
-      <form class="newsletter-form">
-        <input type="email" placeholder="Your email address" required="">
-        <button type="submit" class="normal">Sign Up</button>
-      </form>
-    </div>
-
-        <!-- Install App Column -->
-    <div class="col install">
-      <h4>Install App</h4>
-      <p>From App Store or Google Play</p>
-      <div class="row">
-        <img src="images/pay/app.jpg" alt="Download from App Store" />
-        <img src="images/pay/play.jpg" alt="Get it on Google Play" />
-      </div>
-      <p>Secured Payment Gateways</p>
-      <div class="payment-icons">
-        <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer" aria-label="Visa"><i class="fab fa-cc-visa"></i></a>
-        <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer" aria-label="Mastercard"><i class="fab fa-cc-mastercard"></i></a>
-        <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" aria-label="PayPal"><i class="fab fa-cc-paypal"></i></a>
-        <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer" aria-label="American Express"><i class="fab fa-cc-amex"></i></a>
-        <a href="https://stripe.com" target="_blank" rel="noopener noreferrer" aria-label="Stripe"><i class="fab fa-cc-stripe"></i></a>
-      </div>
-    </div>
       <div class="copyright">
         <p>© Cara 2026. All rights reserved. | <a href="license.html" style="color: #088178">MIT License</a></p>
       </div>
@@ -287,124 +253,76 @@
     </script>
 
     <script>
-document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", () => {
+        const wishlistButtons = document.querySelectorAll(".wishlist-btn");
 
-    const wishlistButtons = document.querySelectorAll(".wishlist-btn");
-
-    wishlistButtons.forEach((button) => {
-
-        button.addEventListener("click", (e) => {
-
+        wishlistButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
 
             const productCard = button.closest(".pro");
-
             const productImage = productCard.querySelector("img").src;
             const productName = productCard.querySelector("h5").innerText;
             const productPrice = productCard.querySelector("h4").innerText;
 
             let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-            const existingProduct = wishlist.find(
-                item => item.name === productName
-            );
+            const existingProduct = wishlist.find(item => item.name === productName);
 
             // ADD TO WISHLIST
             if (!button.classList.contains("active")) {
+              button.classList.add("active");
+              button.innerHTML = '<i class="ri-heart-fill"></i>';
 
-                button.classList.add("active");
+              wishlist.push({
+                name: productName,
+                price: productPrice,
+                image: productImage
+              });
 
-                button.innerHTML =
-                    '<i class="ri-heart-fill"></i>';
-
-                wishlist.push({
-                    name: productName,
-                    price: productPrice,
-                    image: productImage
-                });
-
-                localStorage.setItem(
-                    "wishlist",
-                    JSON.stringify(wishlist)
-                );
-
-                alert("Product added to wishlist ❤️");
+              localStorage.setItem("wishlist", JSON.stringify(wishlist));
+              alert("Product added to wishlist ❤️");
             }
 
             // REMOVE FROM WISHLIST
             else {
+              button.classList.remove("active");
+              button.innerHTML = '<i class="ri-heart-line"></i>';
 
-                button.classList.remove("active");
-
-                button.innerHTML =
-                    '<i class="ri-heart-line"></i>';
-
-                wishlist = wishlist.filter(
-                    item => item.name !== productName
-                );
-
-                localStorage.setItem(
-                    "wishlist",
-                    JSON.stringify(wishlist)
-                );
-
-                alert("Product removed from wishlist");
+              wishlist = wishlist.filter(item => item.name !== productName);
+              localStorage.setItem("wishlist", JSON.stringify(wishlist));
+              alert("Product removed from wishlist");
             }
-
+          });
         });
+      });
+    </script>
 
-    });
+    <script>
+      const brandFilter = document.getElementById("brand-filter");
 
-});
-</script>
-<script>
+      brandFilter.addEventListener("change", function () {
+        const selectedBrand = this.value.toLowerCase().trim();
+        const products = document.querySelectorAll(".pro");
 
-const brandFilter =
-    document.getElementById("brand-filter");
+        products.forEach((product) => {
+          const brandElement = product.querySelector(".des span");
+          const productBrand = brandElement.innerText.toLowerCase().trim();
 
-brandFilter.addEventListener("change", function () {
-
-    const selectedBrand =
-        this.value.toLowerCase().trim();
-
-    const products =
-        document.querySelectorAll(".pro");
-
-    products.forEach((product) => {
-
-        const brandElement =
-            product.querySelector(".des span");
-
-        const productBrand =
-            brandElement.innerText
-            .toLowerCase()
-            .trim();
-
-        // SHOW ALL PRODUCTS
-        if (selectedBrand === "all") {
-
+          // SHOW ALL PRODUCTS
+          if (selectedBrand === "all") {
             product.style.display = "block";
-        }
-
-        // SHOW MATCHING BRAND
-        else if (productBrand === selectedBrand) {
-
+          }
+          // SHOW MATCHING BRAND
+          else if (productBrand === selectedBrand) {
             product.style.display = "block";
-        }
-
-        // HIDE NON-MATCHING PRODUCTS
-        else {
-
+          }
+          // HIDE NON-MATCHING PRODUCTS
+          else {
             product.style.display = "none";
-        }
-    });
-
-});
-
-</script>
-</body>
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
-
-
-<!-- A11y and structural improvements -->
