@@ -4,211 +4,215 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout – Cara</title>
+  <meta name="description" content="Complete your Cara order securely. Enter shipping and payment details to finalise your purchase." />
+  <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="icon" type="image/jpg" sizes="32x32" href="images/favicon.jpg" />
 
   <!-- Checkout styles -->
   <link rel="stylesheet" href="checkout.css" />
 </head>
 <body>
 
-  <div class="checkout-container">
-
+  <!-- ══ CHECKOUT HEADER ══ -->
+  <header class="checkout-container">
     <div class="checkout-header">
-      <div class="back-to-cart">
-        <a href="cart.html" class="back-link" aria-label="Back to cart"><i class="ri-arrow-left-line"></i> Back to Cart</a>
-        <a href="#" id="logout-btn" style="display:none">Logout</a>
-      </div>
+      <a href="cart.html" class="back-to-cart" aria-label="Back to cart">
+        <i class="ri-arrow-left-line"></i> Back to Cart
+      </a>
       <div class="logo">
         <span>Cara</span>
       </div>
     </div>
-
+  </header>
 
   <!-- ══ PAGE ══ -->
   <div class="page-wrapper">
-
-    <!-- Back button -->
-    <button class="back-btn" onclick="window.location.href='cart.html'">
-      <i class="ri-arrow-left-line"></i> Back to Cart
-    </button>
 
     <!-- Page title -->
     <div class="page-title">
       <span class="brand-name">Cara</span>
       <h1>Checkout Your Order</h1>
-      <p>Fill all details to complete your order</p>
+      <p>Fill all details below to complete your order</p>
     </div>
 
     <form id="checkoutForm" novalidate>
 
+      <!-- Full Name -->
       <div class="input-group">
         <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" placeholder="Enter your full name" data-validate="fullName" required>
-        <span class="error-msg"></span>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+               autocomplete="name" data-validate="fullName" required>
+        <span class="error-msg" role="alert"></span>
       </div>
 
-        <!-- Contact Information -->
-        <fieldset class="card">
-          <legend class="card-title">
-            <i class="ri-user-3-line"></i> Contact Information
-          </legend>
+      <!-- Contact Information -->
+      <fieldset class="card">
+        <legend class="card-title">
+          <i class="ri-user-3-line" aria-hidden="true"></i> Contact Information
+        </legend>
 
         <div class="input-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="Enter your email" data-validate="email" required>
-          <span class="error-msg"></span>
+          <input type="email" id="email" name="email" placeholder="Enter your email"
+                 autocomplete="email" data-validate="email" required>
+          <span class="error-msg" role="alert"></span>
         </div>
 
         <div class="input-group">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" placeholder="Enter phone number" data-validate="phone" autocomplete="tel" required>
-          <span class="error-msg"></span>
+          <input type="tel" id="phone" name="phone" placeholder="Enter phone number"
+                 autocomplete="tel" data-validate="phone" required>
+          <span class="error-msg" role="alert"></span>
         </div>
-        </fieldset>
+      </fieldset>
 
-      <div class="input-group">
-        <label for="address">Delivery Address</label>
-        <textarea id="address" placeholder="Enter full address" data-validate="address" autocomplete="street-address" required></textarea>
-        <span class="error-msg"></span>
-      </div>
+      <!-- Delivery Address -->
+      <fieldset class="card">
+        <legend class="card-title">
+          <i class="ri-map-pin-line" aria-hidden="true"></i> Delivery Address
+        </legend>
+
+        <div class="input-group">
+          <label for="address">Street Address</label>
+          <textarea id="address" name="address" placeholder="Enter full address"
+                    autocomplete="street-address" data-validate="address" required></textarea>
+          <span class="error-msg" role="alert"></span>
+        </div>
 
         <div class="input-group">
           <label for="city">City</label>
-          <input type="text" id="city" placeholder="Enter city" data-validate="city" required>
-          <span class="error-msg"></span>
+          <input type="text" id="city" name="city" placeholder="Enter city"
+                 autocomplete="address-level2" data-validate="city" required>
+          <span class="error-msg" role="alert"></span>
         </div>
 
         <div class="input-group">
-          <label for="zip">ZIP Code</label>
-          <input type="text" id="zip" placeholder="ZIP Code" data-validate="zip" required>
-          <span class="error-msg"></span>
+          <label for="zip">ZIP / Postal Code</label>
+          <input type="text" id="zip" name="zip" placeholder="ZIP Code"
+                 autocomplete="postal-code" inputmode="numeric" data-validate="zip" required>
+          <span class="error-msg" role="alert"></span>
         </div>
-
-      </div>
+      </fieldset>
 
       <!-- PAYMENT METHOD -->
-      <div class="input-group">
-        <label for="paymentMethod">Select Payment Method</label>
+      <fieldset class="card payment-box" id="cardDetails">
+        <legend class="card-title">
+          <i class="ri-bank-card-line" aria-hidden="true"></i> Payment Method
+        </legend>
 
-        <select id="paymentMethod" data-validate="paymentMethod" required>
-          <option value="">Choose Payment Method</option>
-          <option value="cod">Cash On Delivery</option>
-          <option value="online">Online Payment</option>
-        </select>
-        <span class="error-msg"></span>
-      </div>
+        <div class="payment-tabs" role="tablist" aria-label="Payment method selection">
+          <div class="payment-tab active" id="tabCOD" role="tab"
+               aria-selected="true" tabindex="0"
+               onclick="selectPayment('cod')" onkeydown="if(event.key==='Enter')selectPayment('cod')">
+            <i class="ri-money-rupee-circle-line" aria-hidden="true"></i> Cash on Delivery
+          </div>
+          <div class="payment-tab" id="tabOnline" role="tab"
+               aria-selected="false" tabindex="-1"
+               onclick="selectPayment('online')" onkeydown="if(event.key==='Enter')selectPayment('online')">
+            <i class="ri-bank-card-2-line" aria-hidden="true"></i> Online Payment
+          </div>
+        </div>
 
-      <!-- CARD DETAILS -->
-      <div class="payment-box" id="cardDetails">
-
-          <div class="payment-tabs">
-            <div class="payment-tab active" id="tabCOD" onclick="selectPayment('cod')">
-              <i class="ri-money-rupee-circle-line"></i> Cash on Delivery
-            </div>
-            <div class="payment-tab" id="tabOnline" onclick="selectPayment('online')">
-              <i class="ri-bank-card-2-line"></i> Online Payment
-            </div>
+        <!-- Online Payment Fields (shown only when Online is selected) -->
+        <div id="onlinePaymentFields" hidden>
+          <div class="input-group">
+            <label for="cardName">Card Holder Name</label>
+            <input type="text" id="cardName" name="cardName" placeholder="Name as on card"
+                   autocomplete="cc-name" data-validate="cardName">
+            <span class="error-msg" role="alert"></span>
           </div>
 
-        <div class="input-group">
-          <label for="cardName">Card Holder Name</label>
-          <input type="text" id="cardName" placeholder="Card holder name" autocomplete="cc-name" data-validate="cardName">
-          <span class="error-msg"></span>
-        </div>
-
-        <div class="input-group">
-          <label for="cardNumber">Card Number</label>
-          <input
-            type="text"
-            id="cardNumber"
-            placeholder="XXXX XXXX XXXX XXXX"
-            inputmode="numeric"
-            autocomplete="cc-number"
-            maxlength="19"
-            data-validate="cardNumber"
-          >
-          <span class="error-msg"></span>
-        </div>
-
-        <div class="row">
-
           <div class="input-group">
-            <label for="expiry">Expiry Date</label>
+            <label for="cardNumber">Card Number</label>
             <input
               type="text"
-              id="expiry"
-              placeholder="MM/YY"
+              id="cardNumber"
+              name="cardNumber"
+              placeholder="XXXX XXXX XXXX XXXX"
               inputmode="numeric"
-              autocomplete="cc-exp"
-              maxlength="5"
-              data-validate="expiry"
+              autocomplete="cc-number"
+              maxlength="19"
+              data-validate="cardNumber"
             >
-            <span class="error-msg"></span>
+            <span class="error-msg" role="alert"></span>
           </div>
 
-          <div class="input-group">
-            <label for="cvv">CVV</label>
-            <input
-              type="password"
-              id="cvv"
-              placeholder="***"
-              inputmode="numeric"
-              autocomplete="cc-csc"
-              maxlength="4"
-              data-validate="cvv"
-            >
-            <span class="error-msg"></span>
-          </div>
+          <div class="row">
+            <div class="input-group">
+              <label for="expiry">Expiry Date</label>
+              <input
+                type="text"
+                id="expiry"
+                name="expiry"
+                placeholder="MM/YY"
+                inputmode="numeric"
+                autocomplete="cc-exp"
+                maxlength="5"
+                data-validate="expiry"
+              >
+              <span class="error-msg" role="alert"></span>
+            </div>
 
-          <div class="order-item">
-            <div class="item-thumb"><i class="ri-shirt-line"></i></div>
-            <div class="item-info">
-              <div class="item-name">Tropical Print Shirt</div>
-              <div class="item-meta">H&M · Size L · Qty 2</div>
+            <div class="input-group">
+              <label for="cvv">CVV</label>
+              <input
+                type="password"
+                id="cvv"
+                name="cvv"
+                placeholder="•••"
+                inputmode="numeric"
+                autocomplete="cc-csc"
+                maxlength="4"
+                data-validate="cvv"
+              >
+              <span class="error-msg" role="alert"></span>
             </div>
-            <div class="item-price">₹1,798</div>
-          </div>
-
-          <div class="totals">
-            <div class="total-row">
-              <span>Subtotal</span>
-              <span>₹4,097</span>
-            </div>
-            <div class="total-row free-ship">
-              <span>Shipping</span>
-              <span>Free</span>
-            </div>
-            <div class="total-row">
-              <span>Tax (5%)</span>
-              <span>₹205</span>
-            </div>
-            <div class="total-row grand">
-              <span>Total</span>
-              <span>₹4,302</span>
-            </div>
-          </div>
-
-          <button class="submit-btn" onclick="placeOrder()" data-original-html='<i class="ri-shield-check-line"></i> Place Your Order'>
-            <i class="ri-shield-check-line"></i> Place Your Order
-          </button>
-
-          <div class="secure-badge">
-            <i class="ri-lock-line"></i> 100% Secure Checkout
           </div>
         </div>
-      </div><!-- /right -->
+      </fieldset>
 
-    </div><!-- /checkout-grid -->
+      <!-- Order Summary -->
+      <div class="totals" id="order-summary" aria-label="Order Summary">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="checkout-subtotal">₹0</span>
+        </div>
+        <div class="total-row free-ship">
+          <span>Shipping</span>
+          <span>Free</span>
+        </div>
+        <div class="total-row">
+          <span>Tax (18% GST)</span>
+          <span id="checkout-tax">₹0</span>
+        </div>
+        <div class="total-row grand">
+          <span>Total</span>
+          <span id="checkout-total">₹0</span>
+        </div>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="placeOrder()" aria-label="Place your order securely">
+        <i class="ri-shield-check-line" aria-hidden="true"></i> Place Your Order
+      </button>
+
+      <div class="secure-badge" aria-label="Secure checkout">
+        <i class="ri-lock-line" aria-hidden="true"></i> 100% Secure Checkout
+      </div>
+
+    </form>
+
   </div><!-- /page-wrapper -->
 
   <!-- ══ SUCCESS POPUP ══ -->
-  <div class="success-overlay" id="successOverlay">
+  <div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true"
+       aria-labelledby="success-heading" hidden>
     <div class="popup-box">
-      <div class="check-circle"><i class="ri-check-line"></i></div>
-      <h2>Order Successful!</h2>
+      <div class="check-circle" aria-hidden="true"><i class="ri-check-line"></i></div>
+      <h2 id="success-heading">Order Successful!</h2>
       <p>Your order has been placed successfully. We'll send you a confirmation shortly.</p>
       <button class="popup-btn" onclick="window.location.href='shop.html'">Continue Shopping</button>
     </div>
